@@ -1,28 +1,28 @@
-# 🎮 Real-Time FPGA Simon Game Platform
+# Real-Time FPGA Simon Game Platform
 
-**VHDL • Python • WebSockets • React/Vite • UART Communication**
+VHDL • Python • WebSockets • React/Vite • UART Communication
 
 A full-stack hardware/software system implementing the classic Simon game on a Xilinx Basys3 FPGA, with real-time bidirectional communication to a web dashboard.
 
 ---
 
-## ✨ Overview
+## Overview
 
-This project integrates **FPGA hardware**, a **Python communication bridge**, and a **web-based dashboard** to create a fully interactive real-time system.
+This project integrates FPGA hardware, a Python communication bridge, and a web-based dashboard to create a fully interactive real-time system.
 
 The FPGA handles all game logic, while the web interface allows visualization and remote control of the game through a WebSocket connection.
 
 ---
 
-## 🧠 System Architecture
+## System Architecture
 
 ![System Architecture](docs/architecture.png)
 
 The system is composed of three main layers:
 
-### 🔌 FPGA (Basys3)
+### FPGA (Basys3)
 
-* Implements the Simon game using **VHDL**
+* Implements the Simon game using VHDL
 * Handles:
 
   * Button inputs
@@ -30,7 +30,7 @@ The system is composed of three main layers:
   * LED patterns
   * 7-segment display
 
-### 🔁 Python Bridge
+### Python Bridge
 
 * Connects FPGA ↔ Web
 * Converts:
@@ -38,7 +38,7 @@ The system is composed of three main layers:
   * UART serial data → WebSocket messages
   * Web inputs → UART signals
 
-### 🌐 Web Dashboard (React + Vite)
+### Web Dashboard (React + Vite)
 
 * Displays game state in real time
 * Sends inputs back to FPGA
@@ -46,9 +46,9 @@ The system is composed of three main layers:
 
 ---
 
-## 🔁 Data Flow
+## Data Flow
 
-**FPGA → Web**
+FPGA → Web:
 
 1. Game state generated on FPGA
 2. Sent via UART
@@ -56,7 +56,7 @@ The system is composed of three main layers:
 4. Broadcast via WebSocket
 5. Rendered on dashboard
 
-**Web → FPGA**
+Web → FPGA:
 
 1. User input (keyboard/UI)
 2. Sent via WebSocket
@@ -64,34 +64,34 @@ The system is composed of three main layers:
 4. Sent via UART
 5. Processed by FPGA
 
-This enables full **bidirectional real-time communication** 
+This enables full bidirectional real-time communication 
 
 ---
 
-## ⚙️ FPGA Modules
+## FPGA Modules
 
 The FPGA design is composed of:
 
-* **`board_io`** → Top-level module (connects everything)
-* **`clean_signals`** → Debounces button inputs
-* **`simon_fsm`** → Main game logic (Finite State Machine)
-* **`sevenseg_mux4`** → Controls 7-segment display
-* **`uart_rx`** → Receives serial data
-* **`uart_tx`** → Transmits serial data
+* `board_io` → Top-level module (connects all components)
+* `clean_signals` → Debounces button inputs
+* `simon_fsm` → Main game logic (FSM-based)
+* `sevenseg_mux4` → Controls 7-segment display
+* `uart_rx` → Receives serial data
+* `uart_tx` → Transmits serial data
 
 The system processes user inputs, executes game logic, and updates outputs (LEDs and display) 
 
 ---
 
-## 🎮 Game Logic
+## Game Logic
 
-The Simon game is implemented using a Finite State Machine:
+The Simon game is implemented using a finite state machine with the following states:
 
-* **Idle** → Waiting to start
-* **Show Sequence** → Displays LED pattern
-* **Player Input** → Waits for user response
-* **Check Input** → Validates input
-* **Game Over** → Ends game
+* Idle
+* Show Sequence
+* Player Input
+* Check Input
+* Game Over
 
 The FPGA maintains:
 
@@ -102,36 +102,36 @@ The FPGA maintains:
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 fpga-simon-dashboard/
 │
 ├── fpga/
-│   ├── src/            # VHDL modules
-│   └── constraints/    # .xdc file
+│   ├── src/
+│   └── constraints/
 │
-├── bridge/             # Python UART ↔ WebSocket bridge
+├── bridge/
 │
-├── website/            # React/Vite dashboard
+├── website/
 │
-└── docs/               # Images, diagrams
+└── docs/
 ```
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
-### 1️⃣ Program the FPGA
+### 1. Program the FPGA
 
 1. Open Vivado
-2. Run synthesis & implementation
+2. Run synthesis and implementation
 3. Generate bitstream
-4. Upload to Basys3
+4. Program the Basys3
 
 ---
 
-### 2️⃣ Run Python Bridge
+### 2. Run Python Bridge
 
 ```bash
 cd bridge
@@ -139,11 +139,11 @@ pip install -r requirements.txt
 python fpga_bridge_ws.py
 ```
 
-⚠️ Make sure to set the correct COM port (e.g., `COM7`) 
+Make sure to configure the correct COM port (e.g., COM7) 
 
 ---
 
-### 3️⃣ Run Web Dashboard
+### 3. Run Web Dashboard
 
 ```bash
 cd website
@@ -152,11 +152,11 @@ npm run dev
 ```
 
 Open:
-👉 http://localhost:5173
+http://localhost:5173
 
 ---
 
-## 🎮 Controls
+## Controls
 
 | Key   | Action     |
 | ----- | ---------- |
@@ -168,7 +168,7 @@ Open:
 
 ---
 
-## 🛠️ Technologies
+## Technologies
 
 * VHDL (FPGA Design)
 * Xilinx Vivado
@@ -179,28 +179,28 @@ Open:
 
 ---
 
-## 💡 Key Highlights
+## Key Highlights
 
-* Full-stack **hardware + software integration**
+* Full-stack hardware and software integration
 * Real-time FPGA ↔ Web communication
 * Custom UART protocol
 * FSM-based embedded system design
 
 ---
 
-## 📸 Demo
+## Demo
 
-*(Add GIF or screenshots here)*
+Add screenshots or a short demo video here.
 
 ---
 
-## 📄 License
+## License
 
 MIT License
 
 ---
 
-## 👤 Authors
+## Authors
 
 * Yaime Morales Hernandez
 * Karlos Cruz Bonano
